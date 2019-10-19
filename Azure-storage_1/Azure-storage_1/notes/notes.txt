@@ -1,0 +1,26 @@
+//////////////
+
+	Hello, sir
+	Enter storageConnectionString:
+	DefaultEndpointsProtocol=https;AccountName=notesaccount;AccountKey=3/h/oSu1aRCzPOyUXy9YqOCDHTVGJJKpiM4NkFcbEBDHf38gKB1XGP8NqbcGLtj3e2rud2jBqe7seF3giFziow==;EndpointSuffix=core.windows.net
+	Do you want a new container? Y/N
+	y
+	Created container 'quickstartblobs13431c3c-1001-4e81-a287-22db60ccdaec'
+
+	Do you want to change the path from 'C:\Users\ivana\OneDrive\Desktop\'? Y/N
+	n
+	Do you want to change the file from 'AzureTest.txt'? Y/N
+	n
+	Temp file = C:\Users\ivana\OneDrive\Desktop\AzureTest.txt
+	Do you want to upload the file? Y/N
+	y
+	Uploading to Blob storage as blob 'AzureTest.txt'
+
+	Listing blobs in container.
+	https://notesaccount.blob.core.windows.net/quickstartblobs13431c3c-1001-4e81-a287-22db60ccdaec/AzureTest.txt
+
+	Do you want to delete the container? Y/N
+	n
+	Press any key to finish, sir
+
+//////////////
