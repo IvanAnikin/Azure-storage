@@ -15,12 +15,14 @@
 
             function onLoad(){
                 const account = {
-                    name: "notesaccount",
-                    sas:  "?sv=2019-02-02&ss=bfqt&srt=sco&sp=rwdlacup&se=2020-10-20T22:05:38Z&st=2019-10-20T14:05:38Z&spr=https&sig=m4hMEUbqGxu5n4x%2FLVoKUxICKAfPANBLzM%2FQBv6BbkY%3D"
+                    name: "notesaccount"
                 };
+                var sas = document.getElementById('sasInput').value;
+                var blobName = "duckTest.jpg";
 
                 const blobUri = 'https://' + account.name + '.blob.core.windows.net';
-                const blobService = AzureStorage.Blob.createBlobServiceWithSas(blobUri, account.sas);
+                
+                const blobService = AzureStorage.Blob.createBlobServiceWithSas(blobUri, sas);
 
                 var containerName = 'js-photo-upload-test';
 
@@ -66,6 +68,19 @@
                     });
     
                 });
+
+                document.getElementById('delete-button').addEventListener('click', () => {
+
+                    var blob = blobName;
+                    blobService.deleteBlobIfExists(containerName, blob, (error, result) => {
+                        if (error) {
+                            // Handle delete blob error
+                        } else {
+                            console.log('Blob deleted successfully');
+                        }
+                    });
+    
+                });
             }
 
         </script>
@@ -81,6 +96,12 @@
         <button id="list-button">List</button>
 
         <button id="delete-button">Delete</button>
+
+        <form>
+            SAS:<br>
+            <input type="text" id="sasInput"><br>
+        </form>
+
     </body>
 
 </html>
