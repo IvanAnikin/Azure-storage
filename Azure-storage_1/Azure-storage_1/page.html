@@ -22,11 +22,11 @@
                 const blobUri = 'https://' + account.name + '.blob.core.windows.net';
                 const blobService = AzureStorage.Blob.createBlobServiceWithSas(blobUri, account.sas);
 
-
+                var containerName = 'js-photo-upload-test';
 
                 document.getElementById('create-button').addEventListener('click', () => {
 
-                    blobService.createContainerIfNotExists('js-photo-upload-test',  (error, container) => {
+                    blobService.createContainerIfNotExists(containerName,  (error, container) => {
                         if (error) {
                             // Handle create container error
                         } else {
@@ -40,7 +40,7 @@
 
                     const file = document.getElementById('fileinput').files[0];
 
-                    blobService.createBlockBlobFromBrowserFile('js-photo-upload-test', 
+                    blobService.createBlockBlobFromBrowserFile(containerName, 
                                                                 file.name, 
                                                                 file, 
                                                                 (error, result) => {
@@ -51,6 +51,20 @@
                                                                     }
                                                                 });
 
+                });
+
+                document.getElementById('list-button').addEventListener('click', () => {
+
+                    blobService.listBlobsSegmented(containerName, null, (error, results) => {
+                        if (error) {
+                            // Handle list blobs error
+                        } else {
+                            results.entries.forEach(blob => {
+                                console.log(blob.name);
+                            });
+                        }
+                    });
+    
                 });
             }
 
