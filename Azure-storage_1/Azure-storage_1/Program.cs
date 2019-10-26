@@ -20,7 +20,7 @@ namespace Azure_storage_1
 
             CloudStorageAccount storageAccount = null;
             Console.WriteLine("Enter storageConnectionString:");
-            string storageConnectionString = ConfigurationManager.ConnectionStrings["AzureTableConStr"].ConnectionString;
+            string storageConnectionString = Console.ReadLine(); //STORAGE CONNECTION STRING (manualy enter)
 
             if (CloudStorageAccount.TryParse(storageConnectionString, out storageAccount))
             {
